@@ -1,0 +1,79 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 30%;
+  padding: 20px;
+  margin: 20px;
+  background-color: #72bbf7;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
+}
+
+.title {
+  font-size: 5.2rem;
+  color: #1e21cc;
+  padding: 0;
+  margin: 0;
+}
+
+.login {
+  font-size: 2.2rem;
+  color: #61708f;
+  padding: 0;
+  margin: 0;
+}
+
+.account {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  padding: 10px 0;
+}
+
+.label {
+  font-size: 1.8rem;
+  font-weight: 500;
+}
+
+.input {
+  width: 90%;
+  height: 40px;
+  font-size: 1.6rem;
+  border-radius: 5px;
+  padding: 0 10px;
+  border: 1px solid #ccc;
+  outline: none;
+
+  &:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 2px rgba(0, 123, 125, 0.25);
+  }
+}
+
+.btn {
+  width: 50%;
+  height: 50px;
+  font-size: 1.8rem;
+  font-weight: 600;
+  outline: none;
+  color: white;
+  background-color: rgb(0, 123, 255);
+  border-radius: 20px;
+  border: 1px solid transparent;
+  cursor: pointer;
+
+  &:focus {
+    background-color: rgba(0, 123, 255, 0.5);
+  }
+}
