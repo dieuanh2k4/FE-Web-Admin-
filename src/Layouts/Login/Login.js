@@ -1,7 +1,10 @@
 import { useState } from 'react';
-import styles from './Login.module.scss';
 import classNames from 'classnames/bind';
+import { ClipLoader } from 'react-spinners';
+
+import styles from './Login.module.scss';
 import { login } from '~/Services/loginService';
+import Home from '../Home';
 
 const cx = classNames.bind(styles);
 
@@ -17,7 +20,19 @@ function Login() {
 
     const result = await login(username, password);
 
+    if (result.response && result.response.status === 400) {
+      window.alert(result.response.data.message + '. Vui lòng đăng nhập lại');
+      setLoading(false);
+      return;
+    }
+
+    // console.log(result);
+
     const token = result;
+
+    // if (token) {
+    //   <Home />;
+    // }
 
     setUsername('');
     setPassword('');
@@ -54,7 +69,13 @@ function Login() {
         </div>
 
         <button className={cx('btn')} onClick={handleButton}>
-          Đăng nhập
+          {loading ? (
+            <div style={{ textAlign: 'center' }}>
+              <ClipLoader color="#3498db" size={25} />
+            </div>
+          ) : (
+            'Đăng nhập'
+          )}
         </button>
       </div>
     </div>
