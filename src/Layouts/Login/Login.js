@@ -30,9 +30,8 @@ function Login() {
 
     const token = result;
 
-    // if (token) {
-    //   <Home />;
-    // }
+    // lưu token vào localStorage
+    localStorage.setItem('token', token);
 
     setUsername('');
     setPassword('');
