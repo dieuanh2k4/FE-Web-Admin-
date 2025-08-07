@@ -1,42 +1,52 @@
 import { useState } from 'react';
 import classNames from 'classnames/bind';
 import { ClipLoader } from 'react-spinners';
+import { useNavigate } from 'react-router-dom';
 
 import styles from './Login.module.scss';
 import { login } from '~/Services/loginService';
-import Home from '../Home';
 
 const cx = classNames.bind(styles);
 
-function Login() {
+function Login({ setIsAuthenticated }) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   const handleButton = async () => {
     console.log(username + ' ' + password);
 
     setLoading(true);
 
-    const result = await login(username, password);
+    try {
+      const result = await login(username, password);
 
-    if (result.response && result.response.status === 400) {
-      window.alert(result.response.data.message + '. Vui lòng đăng nhập lại');
+      if (result.response && result.response.status === 400) {
+        window.alert(result.response.data.message + '. Vui lòng đăng nhập lại');
+        setLoading(false);
+        return;
+      }
+
+      // console.log('result: ' + result);
+
+      const token = result.token;
+      // lưu token vào localStorage
+      localStorage.setItem('token', token);
+
+      console.log('token: ' + token);
+
+      setIsAuthenticated(true);
+      console.log('Navigate tới /home');
+      navigate('/home');
+
+      setUsername('');
+      setPassword('');
+    } catch (error) {
+      console.log(error);
+    } finally {
       setLoading(false);
-      return;
     }
-
-    // console.log(result);
-
-    const token = result;
-
-    // lưu token vào localStorage
-    localStorage.setItem('token', token);
-
-    setUsername('');
-    setPassword('');
-
-    setLoading(false);
   };
 
   return (

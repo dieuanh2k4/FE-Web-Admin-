@@ -1,12 +1,11 @@
-import config from '../config';
-import Home from '../Layouts/Home';
-import Login from '../Layouts/Login';
+import Config from '../config';
 
-const publicRoutes = [];
+import Login from '../Layouts/Login/Login';
+import Home from '../Layouts/Home/Home';
+import DefaultLayout from '../Layouts/DefaultLayout';
 
-const privateRoutes = [
-  { path: config.routes.login, component: Login },
-  { path: config.routes.home, component: Home },
-];
+const publicRoutes = [{ path: Config.routes.login, component: Login, layout: null }];
+
+const privateRoutes = [{ path: Config.routes.home, component: Home, layout: DefaultLayout }];
 
 export { publicRoutes, privateRoutes };

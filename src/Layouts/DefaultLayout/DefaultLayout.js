@@ -1,11 +1,5 @@
-import Login from '../Login';
-
-function DefaultLayout() {
-  return (
-    <div>
-      <Login />
-    </div>
-  );
+function DefaultLayout({ children }) {
+  return <div>{children}</div>;
 }
 
 export default DefaultLayout;
