@@ -1,14 +1,14 @@
 .wrapper {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 10;
+  // position: fixed;
+  // top: 0;
+  // left: 0;
+  // z-index: 10;
   display: flex;
   justify-content: center;
   width: 100%;
   height: var(--default-layout-header-height);
   box-shadow: 0 1px 6px rgba(0, 0, 0, 0.1);
-  background-color: rgb(31 114 196);
+  background-color: var(--primary-color);
 }
 
 .inner {
@@ -29,6 +29,7 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 }
 
 .menu-avatar {

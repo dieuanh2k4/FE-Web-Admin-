@@ -67,12 +67,6 @@ function App() {
       </div>
     </Router>
   );
-
-  // return (
-  //   <div>
-  //     <Login />
-  //   </div>
-  // );
 }
 
 export default App;
